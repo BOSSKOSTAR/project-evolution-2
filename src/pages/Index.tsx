@@ -5,6 +5,8 @@ import { PartnersSection } from "@/components/PartnersSection"
 import { FeaturesSection } from "@/components/FeaturesSection"
 import { RegisterSection } from "@/components/RegisterSection"
 import { PricingSection } from "@/components/PricingSection"
+import { RegistrationSection } from "@/components/RegistrationSection"
+import { Footer } from "@/components/Footer"
 
 export default function Index() {
   const [selectedPlan, setSelectedPlan] = useState<string | undefined>()
@@ -17,10 +19,8 @@ export default function Index() {
       <FeaturesSection />
       <PricingSection onSelectPlan={setSelectedPlan} />
       <RegisterSection selectedPlan={selectedPlan} />
-      <footer className="py-8 text-center text-sm text-gray-400">
-        От умных стратегий до автоматической аналитики —{" "}
-        <span className="font-medium text-white">ваш капитал под надёжным управлением.</span>
-      </footer>
+      <RegistrationSection />
+      <Footer />
     </main>
   )
 }
