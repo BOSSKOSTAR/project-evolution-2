@@ -1,15 +1,19 @@
 import { ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useNavigate } from "react-router-dom"
 
 export function Header() {
+  const navigate = useNavigate()
+  const isLoggedIn = !!localStorage.getItem("evolution_user")
+
   return (
     <header className="flex items-center justify-between px-8 py-4">
-      <div className="flex items-center gap-2">
+      <button onClick={() => navigate("/")} className="flex items-center gap-2">
         <ФинПотокLogo />
         <span className="text-lg font-semibold text-white">
           Эволюция<sup className="text-xs">™</sup>
         </span>
-      </div>
+      </button>
 
       <nav className="hidden md:flex items-center gap-8">
         <a href="#" className="text-sm text-gray-300 hover:text-white transition-colors">
@@ -32,7 +36,7 @@ export function Header() {
       <Button
         variant="outline"
         className="rounded-full border-violet-500 text-violet-400 hover:bg-violet-500/10 hover:text-violet-300 bg-transparent"
-        onClick={() => document.getElementById("cabinet")?.scrollIntoView({ behavior: "smooth" })}
+        onClick={() => navigate(isLoggedIn ? "/cabinet" : "/login")}
       >
         Личный кабинет
       </Button>
